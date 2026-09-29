@@ -1,0 +1,267 @@
+﻿// Main config: chances, effect strength and general settings.
+// Edit it in the app settings window or by hand; the app rewrites this file on save.
+{
+  "general": {
+    "enabled": true,
+    "gsi_port": 3213,
+    "gsi_silence_revert_seconds": 90,
+    "global_chance_multiplier": 1,
+    "exit_when_cs2_closes": false,
+    "fade_in_ms": 220,
+    "fade_out_ms": 380,
+    "show_combo_banner": true,
+    "banner_on_round_start": false,
+    "toggle_hotkey": "End",
+    "apo_config_dir": "",
+    "faceit_safe_mode": true,
+    "strict_mode": false
+  },
+  "slots": [
+    {
+      "name": "audio",
+      "mode": "independent",
+      "max_picks": 2,
+      "blocks_slots": [],
+      "options": [
+        {
+          "id": "no_sound",
+          "chance": 0.2,
+          "enabled": true,
+          "conflicts": [
+            "no_radar"
+          ],
+          "kind": "system",
+          "closes_slot": true
+        },
+        {
+          "id": "mono",
+          "chance": 0.3,
+          "enabled": true,
+          "conflicts": [],
+          "kind": "system",
+          "closes_slot": false
+        },
+        {
+          "id": "bass_boost",
+          "chance": 0.3,
+          "enabled": true,
+          "conflicts": [
+            "muffle"
+          ],
+          "kind": "system",
+          "closes_slot": false
+        },
+        {
+          "id": "muffle",
+          "chance": 0.15,
+          "enabled": true,
+          "conflicts": [
+            "bass_boost"
+          ],
+          "kind": "system",
+          "closes_slot": false
+        },
+        {
+          "id": "white_noise",
+          "chance": 0.05,
+          "enabled": true,
+          "conflicts": [],
+          "kind": "system",
+          "closes_slot": false
+        }
+      ],
+      "pulls": []
+    },
+    {
+      "name": "voice",
+      "mode": "independent",
+      "max_picks": 99,
+      "blocks_slots": [],
+      "options": [
+        {
+          "id": "no_voice",
+          "chance": 0.15,
+          "enabled": true,
+          "conflicts": [],
+          "kind": "cfg",
+          "closes_slot": false
+        }
+      ],
+      "pulls": []
+    },
+    {
+      "name": "light_color",
+      "mode": "independent",
+      "max_picks": 2,
+      "blocks_slots": [],
+      "options": [
+        {
+          "id": "grayscale",
+          "chance": 0.1,
+          "enabled": true,
+          "conflicts": [
+            "colorblind",
+            "invert",
+            "rainbow"
+          ],
+          "kind": "system",
+          "closes_slot": false
+        },
+        {
+          "id": "colorblind",
+          "chance": 0.1,
+          "enabled": true,
+          "conflicts": [
+            "grayscale",
+            "invert",
+            "rainbow"
+          ],
+          "kind": "system",
+          "closes_slot": false
+        },
+        {
+          "id": "invert",
+          "chance": 0.05,
+          "enabled": true,
+          "conflicts": [
+            "grayscale",
+            "colorblind"
+          ],
+          "kind": "system",
+          "closes_slot": false
+        },
+        {
+          "id": "contrast_up",
+          "chance": 0.1,
+          "enabled": true,
+          "conflicts": [
+            "washed_out"
+          ],
+          "kind": "system",
+          "closes_slot": false
+        },
+        {
+          "id": "brightness_down",
+          "chance": 0.1,
+          "enabled": true,
+          "conflicts": [
+            "washed_out"
+          ],
+          "kind": "system",
+          "closes_slot": false
+        },
+        {
+          "id": "washed_out",
+          "chance": 0.1,
+          "enabled": true,
+          "conflicts": [
+            "contrast_up",
+            "brightness_down"
+          ],
+          "kind": "system",
+          "closes_slot": false
+        },
+        {
+          "id": "rainbow",
+          "chance": 0.1,
+          "enabled": true,
+          "conflicts": [
+            "grayscale",
+            "colorblind"
+          ],
+          "kind": "system",
+          "closes_slot": false
+        }
+      ],
+      "pulls": []
+    },
+    {
+      "name": "interface",
+      "mode": "independent",
+      "max_picks": 99,
+      "blocks_slots": [],
+      "options": [
+        {
+          "id": "no_tab",
+          "chance": 0.1,
+          "enabled": true,
+          "conflicts": [],
+          "kind": "cfg",
+          "closes_slot": false
+        },
+        {
+          "id": "no_killfeed",
+          "chance": 0.1,
+          "enabled": true,
+          "conflicts": [],
+          "kind": "cfg",
+          "closes_slot": false
+        },
+        {
+          "id": "no_radar",
+          "chance": 0.1,
+          "enabled": true,
+          "conflicts": [
+            "no_sound"
+          ],
+          "kind": "cfg",
+          "closes_slot": false
+        },
+        {
+          "id": "no_ids",
+          "chance": 0.1,
+          "enabled": true,
+          "conflicts": [],
+          "kind": "cfg",
+          "closes_slot": false
+        },
+        {
+          "id": "no_crosshair",
+          "chance": 0.05,
+          "enabled": true,
+          "conflicts": [],
+          "kind": "cfg",
+          "closes_slot": false
+        }
+      ],
+      "pulls": [
+        {
+          "if_picked": "no_ids",
+          "then_id": "no_killfeed",
+          "chance": 0.5
+        },
+        {
+          "if_picked": "no_killfeed",
+          "then_id": "no_ids",
+          "chance": 0.5
+        }
+      ]
+    }
+  ],
+  "effects": {
+    "white_noise": {
+      "volume": 0.25
+    },
+    "bass_boost": {
+      "gain_db": 12,
+      "fc_hz": 100
+    },
+    "muffle": {
+      "fc_hz": 1100
+    },
+    "brightness_down": {
+      "scale": 0.42
+    },
+    "contrast_up": {
+      "contrast": 1.7
+    },
+    "washed_out": {
+      "contrast": 0.5,
+      "lift": 0.35
+    },
+    "rainbow": {
+      "period_sec": 10,
+      "overexposure": 1.2
+    }
+  }
+}

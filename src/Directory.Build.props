@@ -1,0 +1,13 @@
+<Project>
+
+  <!--
+    Build output does not litter the sources or reach the repository root:
+    bin and obj go into src\build\. That folder stays out of git (.gitignore) and can be deleted
+    at any time - it just gets rebuilt.
+  -->
+  <PropertyGroup>
+    <BaseOutputPath>$(MSBuildThisFileDirectory)build\bin\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)build\obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+
+</Project>

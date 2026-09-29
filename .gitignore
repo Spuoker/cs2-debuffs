@@ -1,0 +1,14 @@
+# сборка
+src/build/
+bin/
+obj/
+*.user
+
+# рабочая копия проги: exe + её data с логами, состоянием и журналом каток
+app/
+
+# готовая прога лежит в release/ и коммитится — это и есть поставка.
+# личное из неё не тащим:
+release/data/logs/
+release/data/state/
+release/data/journal.jsonl

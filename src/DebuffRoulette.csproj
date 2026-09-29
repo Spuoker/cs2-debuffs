@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PlatformTarget>x64</PlatformTarget>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <AssemblyName>cs2-debuffs</AssemblyName>
+    <Version>1.0.0</Version>
+    <Product>cs2-debuffs</Product>
+    <RootNamespace>DebuffRoulette</RootNamespace>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+    <!-- publish: one exe instead of a pile of DLLs -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- the default config is embedded in the exe: on first run the app creates data\debuffs.json itself -->
+    <EmbeddedResource Include="debuffs.json" LogicalName="debuffs.default.json" />
+  </ItemGroup>
+
+</Project>

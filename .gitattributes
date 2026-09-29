@@ -1,0 +1,14 @@
+# Нормализуем переводы строк в репозитории на LF (убирает CRLF-варнинги на Windows)
+* text=auto eol=lf
+
+*.cs    text eol=lf
+*.hlsl  text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.ps1   text eol=lf
+
+# Бинарники — не трогать
+*.exe   binary
+*.dll   binary
+*.ico   binary
+*.png   binary
